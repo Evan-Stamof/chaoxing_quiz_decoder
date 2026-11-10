@@ -1,4 +1,4 @@
-# 学习通章节测验离线解密器
+# 学某通章节测验离线解密器
 
 把浏览器"另存为"下来的学习通页面 → **自动解密字体混淆** → 解析成 Markdown 题库。
 
@@ -23,7 +23,7 @@
 
 ## 二、原理：为什么源码里是乱码
 
-学习通在作业页里塞了一段 `@font-face`：
+学某通在作业页里塞了一段 `@font-face`：
 
 ```css
 @font-face{
@@ -93,7 +93,7 @@ python chaoxing_quiz_decoder.py 学生学习页面.html
 原始题目：40 道
   · 首次运行：渲染 3851 个候选字 × 1 种字体（约 1 分钟，之后会缓存）…
       SourceHanSansCN-Normal.otf 完成 (16s)
-完成：F:\DeepSeekHarness\学习通网站解析\学生学习页面_题目.md  （40 题，解密 96 个字符）
+完成：...\学生学习页面_题目.md  （40 题，解密 96 个字符）
 ```
 
 同目录下就会多出一个 md 文件，用任何 Markdown 编辑器打开即可。
@@ -144,7 +144,7 @@ python chaoxing_quiz_decoder.py 学生学习页面.html --quiet
 ## 六、输出长什么样
 
 ```markdown
-# 思想道德与法治（智慧课程） · 第一章测验
+# （你的课程名） · 第某章测验
 
 | 项目 | 值 |
 |---|---|
@@ -171,9 +171,9 @@ python chaoxing_quiz_decoder.py 学生学习页面.html --quiet
 
 ## 七、局限
 
-- **只管题目，不管答案**。学习通判题在服务端，页面里 `answer{id}` 全为空值，没有正确答案字段。
+- **只管题目，不管答案**。学某通判题在服务端，页面里 `answer{id}` 全为空值，没有正确答案字段。
 - 只处理**字体混淆**这一种。页面上的验证码、人脸抓拍、加密签名参数（`enc` / `matchEnc` / `uploadEnc`）是提交环节的事，跟解析无关。
-- 依赖 `work.html` 里的 DOM 结构（`div.singleQuesId` / `div.TiMu` / `ul.Zy_ulTop`）。学习通改版后需要跟着调。
+- 依赖 `work.html` 里的 DOM 结构（`div.singleQuesId` / `div.TiMu` / `ul.Zy_ulTop`）。学某通改版后需要跟着调。
 
 ---
 
@@ -183,5 +183,5 @@ python chaoxing_quiz_decoder.py 学生学习页面.html --quiet
 |---|---|
 | `chaoxing_quiz_decoder.py` | 主脚本，单文件，可独立拷走 |
 | `fonts/SourceHanSansCN-Normal.otf` | 思源黑体（解密用的参照字体） |
-| `学习通页面解析报告.md` | 对整个页面（我的测试页面）的逆向分析笔记 |
+| `学某通页面解析报告.md` | 对整个页面（我的测试页面）的逆向分析笔记 |
 | `学生学习页面.html` + `学生学习页面_files/` | 库里没有，放你的原始网页快照 |
